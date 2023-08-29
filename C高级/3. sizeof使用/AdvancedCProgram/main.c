@@ -185,10 +185,44 @@ void func3(void) {
 }
 
 
+
+// 对unsigned打印做补充
+void func4(void) {
+    int a = 10;
+    unsigned int b = a - 20;
+    printf("b = %d\n", b);
+    printf("b = %u\n", b);
+
+   if (b > 0) {
+        printf("大于0\n");
+   } else {
+       printf("小于等于0\n");
+   }
+
+    /*
+     在C语言中，printf函数用于格式化输出。
+     %d和%u都是printf函数的格式指定符，但他们有以下区别：
+        1. %d：用来输出一个整型数据，但它会显示数值的正负。
+        2. %u：也用来输出一个整型数据，但它仅用来输出无符号的整数，不显示数值的正负。即如果一个数是负数，用%u打印时将输出其二进制补码相对应的十进制数。
+
+     例如:
+     int a = -1;
+     unsigned int b = 4294967295; //这是32位系统下，unsigned int类型能表示的最大值（即-1的补码）
+
+     printf("%d\n", a);    // 输出: -1
+     printf("%u\n", a);    // 输出: 4294967295
+
+     printf("%d\n", b);    // 输出: -1
+     printf("%u\n", b);    // 输出: 4294967295
+
+     
+     */
+}
+
+
 int main() {
     
-    func1();
-    
+    func4();
     
     return EXIT_SUCCESS;
 }
