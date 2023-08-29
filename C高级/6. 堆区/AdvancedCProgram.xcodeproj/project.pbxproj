@@ -25,6 +25,8 @@
 /* Begin PBXFileReference section */
 		867E56C12A95F85900D52993 /* AdvancedCProgram */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = AdvancedCProgram; sourceTree = BUILT_PRODUCTS_DIR; };
 		867E56C42A95F85900D52993 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		86CCC5AC2A9DC76C00441200 /* 同级指针修饰内存失败解析图.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "同级指针修饰内存失败解析图.png"; sourceTree = "<group>"; };
+		86CCC5AD2A9DC76C00441200 /* 高级指针给修饰低级指针成功解析图.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "高级指针给修饰低级指针成功解析图.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,8 @@
 			isa = PBXGroup;
 			children = (
 				867E56C42A95F85900D52993 /* main.c */,
+				86CCC5AC2A9DC76C00441200 /* 同级指针修饰内存失败解析图.png */,
+				86CCC5AD2A9DC76C00441200 /* 高级指针给修饰低级指针成功解析图.png */,
 			);
 			path = AdvancedCProgram;
 			sourceTree = "<group>";
