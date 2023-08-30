@@ -18,12 +18,17 @@ static int a = 10;
 
 void func1(void) {
     static int b = 20;
+    int c = 10;
+    printf("a地址是:%p\n", &a);
+    printf("b地址是:%p\n", &b);
+    printf("c地址是:%p\n", &c);
 }
 
-// a b都是静态变量, 生命周期一样. 只是作用域不一样.
+// a b都是静态变量, 生命周期一样, 而且都存在静态区. 只是作用域不一样.
 // b只能在func1函数中使用, a能在当前文件中使用.
 
 int main() {
+    func1();
     
     extern int AAA;
     extern void test(void);
