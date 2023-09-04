@@ -51,15 +51,30 @@ struct Person {
 void func3(void) {
     struct Person p = {"a", 10, "hello world", 20};
     
+//    unsigned int offset = offsetof(struct Person, d);
 //    printf("%d\n", sizeof(p));
     
     printf("%d\n", *(int *)((char *)&p + 72));
-
     printf("%d\n", offsetof(struct Person, d));
     
     //#define offsetof(s,m) ((size_t)&(((s*)0)->m))
 }
 
+/*
+ 
+ void func3(void) {
+     unsigned int offset = offsetof(struct Person, d);
+ }
+
+ 
+ AdvancedCProgram`func3:
+     0x100003f70 <+0>:  pushq  %rbp
+     0x100003f71 <+1>:  movq   %rsp, %rbp
+ ->  0x100003f74 <+4>:  movl   $0x48, -0x4(%rbp)
+     0x100003f7b <+11>: popq   %rbp
+     0x100003f7c <+12>: retq
+
+ */
 
 int main() {
     func3();
