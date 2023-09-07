@@ -23,6 +23,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		86262C792AA9707900EEA5B0 /* 图1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "图1.jpg"; sourceTree = "<group>"; };
+		86262C7A2AA970A600EEA5B0 /* 图2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "图2.jpg"; sourceTree = "<group>"; };
+		86262C7B2AA97BDE00EEA5B0 /* Xnip2023-09-07_11-32-37.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Xnip2023-09-07_11-32-37.jpg"; sourceTree = "<group>"; };
 		867E56C12A95F85900D52993 /* AdvancedCProgram */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = AdvancedCProgram; sourceTree = BUILT_PRODUCTS_DIR; };
 		867E56C42A95F85900D52993 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -57,6 +60,9 @@
 		867E56C32A95F85900D52993 /* AdvancedCProgram */ = {
 			isa = PBXGroup;
 			children = (
+				86262C792AA9707900EEA5B0 /* 图1.jpg */,
+				86262C7A2AA970A600EEA5B0 /* 图2.jpg */,
+				86262C7B2AA97BDE00EEA5B0 /* Xnip2023-09-07_11-32-37.jpg */,
 				867E56C42A95F85900D52993 /* main.c */,
 			);
 			path = AdvancedCProgram;
