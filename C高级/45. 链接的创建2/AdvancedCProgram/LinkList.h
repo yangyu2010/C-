@@ -24,3 +24,6 @@ struct LinkNode {
 struct LinkNode *initLinkList(void);
 void foreachList(struct LinkNode *);
 void insert(struct LinkNode *, int, int);
+void delete(struct LinkNode *header, int value);
+void clearList(struct LinkNode *header);
+void destroyList(struct LinkNode *header);

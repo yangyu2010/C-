@@ -78,3 +78,67 @@ void insert(struct LinkNode *header, int oldValue, int newValue) {
     prevNode->next = newNode;
     newNode->next = currentNode;
 }
+
+
+void delete(struct LinkNode *header, int value) {
+    if (header == NULL) {
+        return;
+    }
+
+    struct LinkNode *currentNode = header->next;
+    struct LinkNode *prevNode = header;
+
+    while (currentNode != NULL) {
+        if (currentNode->num == value) {
+            break;
+        }
+        
+        prevNode = currentNode;
+        currentNode = currentNode->next;
+    }
+    
+    if (currentNode == NULL) {
+        return;
+    }
+    
+    prevNode->next = currentNode->next;
+    
+    free(currentNode);
+    currentNode = NULL;
+}
+
+
+void clearList(struct LinkNode *header) {
+    if (header == NULL) {
+        return;
+    }
+    
+    struct LinkNode *currentNode = header->next;
+    // 清空头的next
+    header->next = NULL;
+    
+    while (currentNode != NULL) {
+        struct LinkNode *nextNode = currentNode->next;
+        
+        currentNode->num = 0;
+        currentNode->next = NULL;
+        free(currentNode);
+        
+        currentNode = nextNode;
+    }
+    
+    // 0 10 20 30
+}
+
+
+void destroyList(struct LinkNode *header) {
+    if (header == NULL) {
+        return;
+    }
+    clearList(header);
+    
+    header->num = 0;
+    header->next = NULL;
+    free(header);
+    header = NULL;
+}
