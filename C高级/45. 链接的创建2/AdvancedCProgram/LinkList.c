@@ -142,3 +142,85 @@ void destroyList(struct LinkNode *header) {
     free(header);
     header = NULL;
 }
+
+
+void insertByPosition(struct LinkNode *header, int position, int value) {
+    if (header == NULL) {
+        return;
+    }
+
+    if (position < 0) {
+        return;
+    }
+    
+    struct LinkNode *currentNode = header->next;
+    struct LinkNode *prevNode = header;
+    int count = 0;
+    while (count != position && currentNode != NULL) {
+        prevNode = currentNode;
+        currentNode = currentNode->next;
+        count += 1;
+    }
+    
+    struct LinkNode *newNode = malloc(sizeof(struct LinkNode));
+    newNode->num = value;
+    newNode->next = NULL;
+    
+    prevNode->next = newNode;
+    newNode->next = currentNode;
+}
+
+
+void deleteByPosition(struct LinkNode *header, int position) {
+    if (header == NULL) {
+        return;
+    }
+
+    if (position < 0) {
+        return;
+    }
+    
+    struct LinkNode *currentNode = header->next;
+    struct LinkNode *prevNode = header;
+    int count = 0;
+    while (count != position && currentNode != NULL) {
+        prevNode = currentNode;
+        currentNode = currentNode->next;
+        count += 1;
+    }
+    
+    // 没有找到当前index
+    if (currentNode == NULL) {
+        return;
+    }
+    
+    prevNode->next = currentNode->next;
+    free(currentNode);
+    currentNode = NULL;
+}
+
+
+void reverse(struct LinkNode *header) {
+    if (header == NULL) {
+        return;
+    }
+    struct LinkNode *currentNode = header->next;
+    struct LinkNode *prevNode = header;
+
+    while (currentNode != NULL) {
+        struct LinkNode *nextNode = currentNode->next;
+        currentNode->next = prevNode;
+        
+        prevNode = currentNode;
+        currentNode = nextNode;
+    }
+    
+    // 变化之前的第一个节点, 它现在变成最后一个了, 所以next要指向null
+    struct LinkNode *firstNode = header->next;
+    firstNode->next = NULL;
+    
+    // 现在最新的第一个
+    // currentNode已经没有数据了 所以prevNode是最后一个节点
+    // 要把header的next指向这个最新的一个
+    header->next = prevNode;
+}

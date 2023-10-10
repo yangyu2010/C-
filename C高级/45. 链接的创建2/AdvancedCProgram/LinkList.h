@@ -27,3 +27,8 @@ void insert(struct LinkNode *, int, int);
 void delete(struct LinkNode *header, int value);
 void clearList(struct LinkNode *header);
 void destroyList(struct LinkNode *header);
+
+
+void insertByPosition(struct LinkNode *header, int position, int value);
+void deleteByPosition(struct LinkNode *header, int position);
+void reverse(struct LinkNode *header);
