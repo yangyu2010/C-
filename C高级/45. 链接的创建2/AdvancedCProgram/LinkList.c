@@ -205,7 +205,7 @@ void reverse(struct LinkNode *header) {
         return;
     }
     struct LinkNode *currentNode = header->next;
-    struct LinkNode *prevNode = header;
+    struct LinkNode *prevNode = NULL;
 
     while (currentNode != NULL) {
         struct LinkNode *nextNode = currentNode->next;
@@ -216,8 +216,8 @@ void reverse(struct LinkNode *header) {
     }
     
     // 变化之前的第一个节点, 它现在变成最后一个了, 所以next要指向null
-    struct LinkNode *firstNode = header->next;
-    firstNode->next = NULL;
+//    struct LinkNode *firstNode = header->next;
+//    firstNode->next = NULL;
     
     // 现在最新的第一个
     // currentNode已经没有数据了 所以prevNode是最后一个节点
