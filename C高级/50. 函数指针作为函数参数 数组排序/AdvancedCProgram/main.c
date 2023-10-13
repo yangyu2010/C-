@@ -11,15 +11,15 @@
 #include <stdlib.h>
 
 
+/*
 void sort(void *array, int arrayLength, int itemLength, int(*compare)(void *, void *), void(*change)(void *, int, int)) {
-    char *p = array;
-
     for (int i = 0; i < arrayLength; i++) {
         int min = i;
+
         for (int j = i + 1; j < arrayLength; j++) {
-            void *minData = p + min * itemLength;
-            void *currentData = p + j * itemLength;
-            if (compare(minData, currentData) < 0) {
+            void *currentDataPointer = (char *)array + j * itemLength;
+            void *minDataPointer = (char *)array + min * itemLength;
+            if (compare(minDataPointer, currentDataPointer) < 0) {
                 min = j;
             }
         }
@@ -27,6 +27,38 @@ void sort(void *array, int arrayLength, int itemLength, int(*compare)(void *, vo
         if (min != i) {
             change(array, min, i);
         }
+    }
+}
+*/
+
+void sort(void *array, int arrayLength, int itemLength, int(*compare)(void *, void *)) {
+
+    void *tempItemPointer = malloc(itemLength);
+
+    for (int i = 0; i < arrayLength; i++) {
+        int min = i;
+
+        for (int j = i + 1; j < arrayLength; j++) {
+            void *currentDataPointer = (char *)array + j * itemLength;
+            void *minDataPointer = (char *)array + min * itemLength;
+            if (compare(minDataPointer, currentDataPointer) < 0) {
+                min = j;
+            }
+        }
+        
+        if (min != i) {
+            void *iPointer = (char *)array + i * itemLength;
+            void *minPointer = (char *)array + min * itemLength;
+            
+            memcpy(tempItemPointer, iPointer, itemLength);
+            memcpy(iPointer, minPointer, itemLength);
+            memcpy(minPointer, tempItemPointer, itemLength);
+        }
+    }
+    
+    if (tempItemPointer != NULL) {
+        free(tempItemPointer);
+        tempItemPointer = NULL;
     }
 }
 
@@ -88,11 +120,13 @@ void func1(void) {
     struct Person array[5] = { person1, person2, person3, person4, person5};
     int arrayLength = sizeof(array) / sizeof(struct Person);
     
+    printf("\n排序前:\n");
     for (int i = 0; i< arrayLength; i++) {
         printPerson(&(array[i]));
     }
     
-    sort(&array, arrayLength, sizeof(struct Person), comparePerson, changePerson);
+    //sort(&array, arrayLength, sizeof(struct Person), comparePerson, changePerson);
+    sort(&array, arrayLength, sizeof(struct Person), comparePerson);
     
     printf("\n排序后:\n");
     for (int i = 0; i< arrayLength; i++) {
@@ -125,13 +159,16 @@ void printInt(void *data) {
 
 
 void func2(void) {
-    int array[5] = { 10, 2, 3, 4, 5};
+    int array[5] = { 1, 20, 3, 40, 5};
     int arrayLength = sizeof(array) / sizeof(int);
+    
+    printf("\n排序前:\n");
     for (int i = 0; i< arrayLength; i++) {
         printInt(&(array[i]));
     }
     
-    sort(&array, arrayLength, sizeof(int), compareInt, changeInt);
+    //sort(&array, arrayLength, sizeof(int), compareInt, changeInt);
+    sort(&array, arrayLength, sizeof(int), compareInt);
     
     printf("\n排序后:\n");
     for (int i = 0; i< arrayLength; i++) {
@@ -140,8 +177,7 @@ void func2(void) {
 }
 
 int main() {
-    //func1();
-    
+    func1();
     func2();
     
     return EXIT_SUCCESS;
